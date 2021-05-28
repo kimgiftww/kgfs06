@@ -180,10 +180,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                           children: [
                             FFButtonWidget(
                               onPressed: () async {
-                                final user = await signInWithGoogle(context);
+                                final user = await createAccountWithEmail(
+                                  context,
+                                  emailTextController.text,
+                                  passwordTextController.text,
+                                );
                                 if (user == null) {
                                   return;
                                 }
+
                                 await Navigator.push(
                                   context,
                                   MaterialPageRoute(
